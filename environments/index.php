@@ -31,11 +31,17 @@ return [
         'setExecutable' => [
             'yii',
         ],
+        'setWritable' => [
+            'api/runtime',
+        ],
     ],
     'Production' => [
         'path' => 'prod',
         'setExecutable' => [
             'yii',
+        ],
+        'setWritable' => [
+            'api/runtime',
         ],
     ],
 ];
