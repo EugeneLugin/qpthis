@@ -1,0 +1,12 @@
+{
+  "name": "EugeneL/QPthis",
+  "description": "QPthis",
+  "minimum-stability": "development",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Eugene Lugin",
+      "email": "call.eugene@gmail.com"
+    }
+  ]
+}
