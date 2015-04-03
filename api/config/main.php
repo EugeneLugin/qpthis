@@ -11,15 +11,18 @@ return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),    
     'bootstrap' => ['log'],
+
     'modules' => [
         'utility' => [
             'class' => 'c006\utility\migration\Module',
         ],
     ],
     'components' => [
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => false,
+        'request' => [
+            'cookieValidationKey' => '123456789',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -30,18 +33,6 @@ return [
                 ],
             ],
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],        
-        ],
-        'request' => [
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ]
-        ]
     ],
     'params' => $params,
 ];
