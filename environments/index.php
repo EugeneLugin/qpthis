@@ -33,6 +33,7 @@ return [
         ],
         'setWritable' => [
             'api/runtime',
+            'api/web/assets'
         ],
     ],
     'Production' => [
