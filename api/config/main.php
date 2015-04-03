@@ -12,10 +12,9 @@ return [
     'basePath' => dirname(__DIR__),    
     'bootstrap' => ['log'],
     'modules' => [
-        'v1' => [
-            'basePath' => '@app/modules/v1',
-            'class' => 'api\modules\v1\Module'
-        ]
+        'utility' => [
+            'class' => 'c006\utility\migration\Module',
+        ],
     ],
     'components' => [
         'user' => [
