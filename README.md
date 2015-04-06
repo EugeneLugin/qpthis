@@ -6,7 +6,7 @@ Initialisation
 --------------
 
 ```bash
-composer install --no-dev --optimize-autoloader --prefer-dists
+composer install --no-dev --optimize-autoloader --prefer-dist
 init
 ```
 
