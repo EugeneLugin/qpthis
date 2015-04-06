@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button ng-click="filter.cancel()" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title"><i class="fa fa-search"></i> Фильтр по дате создания</h4>
+</div>
+<div class="modal-body">
+  <label>Диапазон дат:</label>
+  <div class="form-group clearfix">
+    <div class="col-sm-5">
+      <label class="col-sm-2 control-label">От</label>
+      <input class="datetimepicker form-control" type="text" id="date_from" name="date_from" ng-model="filter.obj.date_from" />
+    </div>
+  </div>
+  <div class="form-group clearfix">
+    <div class="col-sm-5">
+      <label class="col-sm-2 control-label">До</label>
+      <input class="datetimepicker form-control" type="text" id="date_till" name="date_till" ng-model="filter.obj.date_till" />
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-flat btn-success" ng-click="filter.submit()">Применить фильтр</button>
+  <button class="btn btn-flat btn-danger" ng-click="filter.clear()">Очистить фильтр</button>
+</div>

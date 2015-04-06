@@ -1,0 +1,43 @@
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Товары</h3>
+    <div class="box-tools">
+      <div class="input-group">
+        <div class="input-group-btn">
+          <button title="Новый товар" class="btn btn-sm btn-default btn-flat pull-right" ng-click="items.create_new()"><i class="fa fa-file-o"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <tr>
+        <th>Код</th>
+        <th>Состояние</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Действия</th>
+      </tr>
+      <tr ng-repeat="cur_item in items.list" id="item_{{item.uuid}}">
+        <td>
+          {{cur_item.uuid}}
+        </td>
+        <td>
+          <button class="btn btn-sm btn-flat" ng-class="{'btn-success': !cur_item.inactive, 'btn-danger': cur_item.inactive}" ng-click="items.toggle_active(cur_item)">
+            <span ng-show="!cur_item.inactive">активный</span>
+            <span ng-show="cur_item.inactive">неактивный</span>
+          </button>
+        </td>
+        <td><p><a href="{{cur_item.url}}" target="_blank">{{cur_item.name}}</a></p>
+          <small>{{cur_item.short_name}}</small>
+        </td>
+        <td>{{cur_item.price | currency:''}}</td>
+        <td>
+          <button title="Редактировать" class='btn btn-sm btn-flat btn-default btn-flat' ng-click="items.edit(cur_item)"><i class="fa fa-pencil"></i></button>
+          <a title="Форма для сайта" class='btn btn-sm btn-flat btn-default btn-flat' target="_blank" href="{{items.api_url}}/item_form.php?id={{cur_item.uuid}}"><i class="fa fa-shopping-cart"></i></a>
+          <button title="Удалить" class='btn btn-sm btn-flat btn-danger btn-flat' ng-click="items.delete_it(cur_item)"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->

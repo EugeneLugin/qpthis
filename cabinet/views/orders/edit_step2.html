@@ -1,0 +1,39 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Шаг 2 - Доставка товара</h3>
+  </div>
+  <form name="new_order" role="form" ng-submit="order.submit()">
+    <div class="form-group clearfix">
+      <label class="col-sm-2 control-label">Статус</label>
+      <div class="col-sm-5">
+        <select class="form-control" name="status_step1" ng-model="order.obj.status_step2">
+          <option ng-repeat="status in order.statuses" ng-selected="order.obj.status_step2 == status.id" value='{{ status.id }}'>{{status.automatic ? '(АВТО) ' : ''}}{{ status.name | notags }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label for="inputalert_at" class="col-sm-2 control-label">Напомнить</label>
+      <div class="col-sm-5">
+        <input ng-required="order.obj.status_step2 == 222" class="datetimepicker form-control" type="text" id="inputalert_at" name="alert_at" ng-model="order.obj.alert_at" />
+      </div>
+    </div>
+    <input-field title="Номер декларации Новой почты" name="newpost_id" model="order.obj.newpost_id"></input-field>
+    <input-field title="ВОЗВРАТ. Номер декларации Новой почты" name="newpost_backorder" model="order.obj.newpost_backorder"></input-field>
+    <div class="box-body">
+      <label>Комментарии</label>
+      <div class="form-group clearfix">
+        <ul style="max-height: 100px; overflow: auto;">
+          <li ng-repeat="comment in order.obj.orderAudits"
+              ng-if="comment.comment && comment.comment != ''">
+            {{comment.date | date:'dd.mm.yy hh:ii:ss'}}: {{comment.comment}}
+          </li>
+        </ul>
+      </div><br/>
+      <input-field title="Добавить комментарий" name="comment" model="order.obj.comment"></input-field>
+    </div>
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<p><a class='btn btn-default' ui-sref="orders.list">Вернуться к списку заказов</a>
+<button class='btn btn-flat btn-success' ng-click="np_list.done()">Отметить заказы как переданные</button></p>
+<table class="table table-hover">
+  <tr>
+    <th>№</th>
+    <th>Город, область</th>
+    <th>Телефон</th>
+    <th>ФИО</th>
+    <th>Адрес, отделение НП</th>
+    <th>Стоимость</th>
+    <th>Описание</th>
+    <th>Параметры</th>
+  </tr>
+  <tr ng-repeat="order in np_list.list">
+    <td ng-bind="$index+1"></td>
+    <td ng-bind="order.warehouse.cityRu"></td>
+    <td ng-bind="order.phone | phone"></td>
+    <td ng-bind="order.fio"></td>
+    <td ng-bind="order.warehouse.addressRu"></td>
+    <td ng-bind="order.item_price | currency:''"></td>
+    <td>{{order.item.name}} ({{order.item_count}} шт)</td>
+    <td ng-bind="order.item_params"></td>
+  </tr>
+</table>

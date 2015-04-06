@@ -1,0 +1,19 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">SMS - заказ № {{order.obj.id}}</h3>
+  </div>
+  <div class="box-body">
+    <div class="form-group">
+      <b>Отправленные SMS:</b>
+      <table class="table table-bordered table-condensed table-hover">
+        <tr><th>Дата</th><th>Текст</th><th>Статус</th></tr>
+        <tr ng-repeat="sms in order.obj.flysms">
+          <td ng-bind="sms.date | date"></td>
+          <td ng-bind="sms.text"></td>
+          <td ng-bind="sms.status"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <button ng-click="filter.cancel()" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title"><i class="fa fa-search"></i> Фильтр по статусу шага 3</h4>
+</div>
+<div class="modal-body">
+  <label>Статусы:</label>
+  <div class="form-group clearfix">
+    <label style="display: block; font-weight: normal" ng-repeat="status in filter.statuses">
+      <input
+          type="checkbox"
+          name="steps_filter[]"
+          value="{{status.id}}"
+          ng-checked="filter.obj.step3.indexOf(status.id) > -1"
+          ng-click="filter.toggleSelection(status.id)"
+          >
+      {{status.name | notags}}
+      <br/>
+    </label>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-flat btn-success" ng-click="filter.submit()">Применить фильтр</button>
+  <button class="btn btn-flat btn-danger" ng-click="filter.clear()">Очистить фильтр</button>
+</div>

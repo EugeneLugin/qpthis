@@ -1,0 +1,14 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Новый заказ</h3>
+  </div>
+  <form name="new_order" role="form" ng-submit="order.submit()">
+    <div class="box-body">
+      <input-field title="ФИО" name="name" model="order.obj.fio"></input-field>
+    </div>
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Добавить</button>
+    </div>
+  </form>
+</div>

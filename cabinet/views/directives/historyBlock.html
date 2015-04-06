@@ -1,0 +1,18 @@
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Параметр</th>
+    <th>Было</th>
+    <th>Стало</th>
+  </tr>
+  <tr ng-repeat="(key, value) in obj">
+    <td>{{key | orderFieldName}}</td>
+    <td ng-if="['whs_ref','item_id','status_step1','status_step2','status_step3'].indexOf(key) == -1">{{value.old}}</td>
+    <td ng-if="key == 'whs_ref'"><newpost-warehouse whsref="value.old"></newpost-warehouse></td>
+    <td ng-if="key == 'item_id'"><item-name uuid="value.old"></item-name></td>
+    <td ng-if="['status_step1','status_step2','status_step3'].indexOf(key) != -1"><step-status stid="value.old"></step-status></td>
+    <td ng-if="['whs_ref','item_id','status_step1','status_step2','status_step3'].indexOf(key) == -1">{{value.new}}</td>
+    <td ng-if="key == 'whs_ref'"><newpost-warehouse whsref="value.new"></newpost-warehouse></td>
+    <td ng-if="key == 'item_id'"><item-name uuid="value.new"></item-name></td>
+    <td ng-if="['status_step1','status_step2','status_step3'].indexOf(key) != -1"><step-status stid="value.new"></step-status></td>
+  </tr>
+</table>

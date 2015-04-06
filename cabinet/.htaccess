@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "QPthis"
+AuthUserFile /cabinet/.htpasswd
+Require valid-user

@@ -1,0 +1,69 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Шаг 1 - уточнение данных</h3>
+  </div>
+  <form name="new_order" role="form" ng-submit="order.submit()">
+    <div class="box-body">
+      <div class="form-group clearfix">
+        <label class="col-sm-2 control-label">Статус</label>
+        <div class="col-sm-5">
+          <select class="form-control" name="status_step1" ng-model="order.obj.status_step1">
+            <option ng-repeat="status in order.statuses" ng-selected="order.obj.status_step1 == status.id" value='{{ status.id }}'>{{status.automatic ? '(АВТО) ' : ''}}{{ status.name | notags }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group clearfix">
+        <label for="inputalert_at" class="col-sm-2 control-label">Напомнить</label>
+        <div class="col-sm-5">
+          <input ng-required="order.obj.status_step1 == 102" class="datetimepicker form-control" type="text" id="inputalert_at" name="alert_at" ng-model="order.obj.alert_at" />
+        </div>
+      </div>
+      <input-field title="ФИО" name="fio" model="order.obj.fio"></input-field>
+      <p>Адрес укзанный при заказе: {{order.obj.city_area}} {{order.obj.address}}</p>
+      <input-field title="Адрес для курьера" name="courier_adr" model="order.obj.courier_adr"></input-field>
+      <div class="form-group clearfix">
+        <label class="col-sm-2 control-label">Отделение Новой почты (<a target="_blank" href="http://novaposhta.ua/frontend/nearest/ru">найти</a>)</label>
+        <div class="col-sm-5">
+          <select ng-options="city.ref as city.nameRu for city in order.cities" class="form-control"
+                  ng-model="order.city_ref"
+                  ng-change="order.changeCity()">
+          </select>
+          <select ng-show="order.selected_city"
+                  ng-options="whs.ref as whs.addressRu for whs in order.selected_city.warehouses" class="form-control"
+                  ng-model="order.obj.whs_ref"
+                  ng-change="order.changeWarehouse()">
+          </select>
+        </div>
+      </div><br/>
+      <input-field title="Количество" name="item_count" model="order.obj.item_count"></input-field>
+      <input-field title="Товар" readonly="true" name="item_name" model="order.obj.item.name"></input-field>
+      <input-field title="Параметры" name="item_params" model="order.obj.item_params"></input-field>
+      <input-field type="number" min="1" step="any" title="Сумма" name="item_price" model="order.obj.item_price"></input-field>
+      <input-field type="number" min="0" step="any" title="Вес (кг)" name="weight" model="order.obj.weight"></input-field>
+      <input-field type="number" min="1" step="1" title="Ширина (см)" name="width" model="order.obj.width"></input-field>
+      <input-field type="number" min="1" step="1" title="Высота (см)" name="height" model="order.obj.height"></input-field>
+      <input-field type="number" min="1" step="1" title="Глубина (см)" name="length" model="order.obj.length"></input-field>
+      <div class="form-group clearfix">
+        <label for="inputphone" class="col-sm-2 control-label">Телефон</label>
+        <div class="col-sm-5">
+          <input ui-mask="(999)999-99-99" class="form-control" type="text" id="inputphone" name="phone" ng-model="order.obj.phone" />
+        </div>
+      </div>
+      <input-field title="Email" name="email" model="order.obj.email"></input-field>
+      <label>Комментарии</label>
+      <div class="form-group clearfix">
+        <ul style="max-height: 100px; overflow: auto;">
+          <li ng-repeat="comment in order.obj.orderAudits"
+              ng-if="comment.comment && comment.comment != ''">
+            {{comment.date | date:'dd.mm.yy hh:ii:ss'}}: {{comment.comment}}
+          </li>
+        </ul>
+      </div><br/>
+      <input-field title="Добавить комментарий" name="comment" model="order.obj.comment"></input-field>
+    </div>
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+</div>

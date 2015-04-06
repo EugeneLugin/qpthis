@@ -1,0 +1,20 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">История заказа {{order.obj.id}}</h3>
+  </div>
+
+  <div class="box-body">
+    <ul class="timeline">
+      <li ng-repeat="comment in order.obj.orderAudits | reverse">
+        <div class="timeline-item">
+          <span class="time"><i class="fa fa-clock-o"></i> {{comment.date | date:'dd.mm.yy hh:ii:ss'}}</span>
+          <h3 class="timeline-header">{{comment.activity}}</h3>
+          <div ng-if="comment.details" class="timeline-body">
+            <history-block obj="comment.details"></history-block>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

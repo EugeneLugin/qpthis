@@ -1,0 +1,84 @@
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Архив заказов</h3>
+    <div class="box-tools">
+    </div>
+  </div>
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <tr>
+        <th>Номер</th>
+        <th>Создан</th>
+        <th>Оформление</th>
+        <th>Доставка</th>
+        <th>Оплата</th>
+        <th>ФИО</th>
+        <th>Адрес</th>
+        <th>Товар</th>
+        <th>Сумма</th>
+        <th>Телефон</th>
+        <th>Доставка груза</th>
+        <th>Деньги/возврат</th>
+      </tr>
+      <tr ng-repeat="order in orders.list" id="order_{{order.id}}">
+        <td>
+          {{order.id}}<br/>
+          <button title="История" ng-click="orders.history(order)" class="btn btn-sm btn-flat btn-default"><i class="fa fa-list-ol"></i></button>
+        </td>
+        <td>
+          {{order.created_at | date:"dd-mm-yy hh:mm:ss"}}
+        </td>
+        <td>
+          <button class="btn btn-sm btn-flat" ng-class="'btn-'+order.step1.domClass">
+            <span ng-if="!order.status_step2">{{order.step1.act | notags}}<br/></span>
+            <small ng-bind-html="order.step1.name | trusted"></small>
+          </button>
+        </td>
+        <td>
+          <button ng-if="order.status_step2" class="btn btn-sm btn-flat" ng-class="'btn-'+order.step2.domClass">
+            <span ng-if="!order.status_step3">{{order.step2.act | notags}}<br/></span>
+            <small ng-bind-html="order.step2.name | trusted"></small>
+          </button>
+        </td>
+        <td>
+          <button ng-if="order.status_step3" class="btn btn-sm btn-flat" ng-class="'btn-'+order.step3.domClass">
+            <span>{{order.step3.act | notags}}<br/></span>
+            <small ng-bind-html="order.step3.name | trusted"></small>
+          </button>
+        </td>
+        <td>
+          {{order.fio}}
+        </td>
+        <td>
+          <span title="{{order.warehouse.addressRu}}">{{order.warehouse.cityRu}} {{order.warehouse.number ? '№'+order.warehouse.number : ''}}</span><br/>
+          <small>({{order.city_area}} {{order.address}})</small>
+        </td>
+        <td>
+          {{order.item.name}}<br/>
+          <small>({{order.item_count}} шт)<br/>
+            {{order.item_params}}
+          </small>
+        </td>
+        <td>
+          {{order.item_price | currency:''}}
+        </td>
+        <td>
+          <button class="btn btn-flat btn-default">
+            {{order.phone | phone}}<br/>
+            <small ng-if="order.email" ng-bind="order.email"></small>
+          </button>
+        </td>
+        <td>
+          <a target="_new" href="http://novaposhta.ua/tracking/?cargo_number={{order.newpost_id}}&language=ru">{{order.newpost_id}}</a>
+          <span ng-if="order.newpost_answer" ng-bind-html="order.get_newpost_answer().msg | trusted"></span>
+          <i class="fa fa-clock-o" ng-if="order.newpost_last_update" title="обновлено: {{order.newpost_last_update}}"></i>
+        </td>
+        <td>
+          <a target="_new" href="http://novaposhta.ua/tracking/?cargo_number={{order.newpost_backorder}}&language=ru">{{order.newpost_backorder}}</a>
+          <span ng-if="order.newpost_backorder_answer" ng-bind-html="order.get_newpost_backorder_answer().msg | trusted"></span>
+          <i class="fa fa-clock-o" ng-if="order.newpost_last_backorder_update" title="обновлено: {{order.newpost_last_backorder_update}}"></i>
+        </td>
+      </tr>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->

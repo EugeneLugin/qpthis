@@ -1,0 +1,21 @@
+<p><button class='btn btn-default' ng-click="order.back_to_list()">Вернуться к списку заказов</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Шаг 3 - завершение обработки</h3>
+  </div>
+  <form name="new_order" role="form" ng-submit="order.submit()">
+
+    <div class="form-group clearfix">
+      <label class="col-sm-2 control-label">Статус</label>
+      <div class="col-sm-5">
+        <select class="form-control" name="status_step3" ng-model="order.obj.status_step3">
+          <option ng-repeat="status in order.statuses" ng-selected="order.obj.status_step3 == status.id" value='{{ status.id }}'>{{status.automatic ? '(АВТО) ' : ''}}{{ status.name | notags }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+</div>

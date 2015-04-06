@@ -1,0 +1,45 @@
+<p><button class='btn btn-default' ng-click="item.back_to_list()">Вернуться к списку товаров</button></p>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Редактирование</h3>
+  </div><!-- /.box-header -->
+  <!-- form start -->
+  <form name="new_item" role="form" ng-submit="item.submit()">
+    <div class="box-body">
+      <input-field title="Название" name="name" model="item.obj.name"></input-field>
+      <input-field title="Краткое название" name="short_name" model="item.obj.short_name"></input-field>
+      <input-field title="Cайт (полная ссылка с http://)" name="url" model="item.obj.url"></input-field>
+      <input-field title="Цена" name='price' model="item.obj.price"></input-field>
+
+      <input-field title="Параметр 1" name='param1_name' model="item.obj.param1_name"></input-field>
+      <input-field title="Возможные значения параметра 1 (через ; )" name='param1' model="item.obj.param1"></input-field>
+      <input-field title="Параметр 2" name='param1_name' model="item.obj.param2_name"></input-field>
+      <input-field title="Возможные значения параметра 2 (через ; )" name='param2' model="item.obj.param2"></input-field>
+
+      <input-field title="Вес (кг)" name='weight' model="item.obj.weight"></input-field>
+      <input-field title="Ширина (см)" name='width' model="item.obj.width"></input-field>
+      <input-field title="Высота (см)" name='height' model="item.obj.height"></input-field>
+      <input-field title="Глубина (см)" name='length' model="item.obj.length"></input-field>
+
+      <input-field title="Yandex метрика идентификатор" name='yandexmetric' model="item.obj.yandexmetric"></input-field>
+      <input-field title="Yandex метрика цель" name='yandexgoal' model="item.obj.yandexgoal"></input-field>
+      <input-field title="Yandex метрика цель для завершающего экрана" name='yandexgoal2' model="item.obj.yandexgoal2"></input-field>
+
+      <div class="form-group clearfix">
+        <label class="control-label">Завершение покупки</label>
+        <div>
+          <textarea name="finish_screen" ui-tinymce ng-model="item.obj.finish_screen"></textarea>
+        </div>
+        <small>
+          {item} будет заменено на название товара<br/>
+          {surname} будет заменено на фамилию покупателя<br/>
+          {name} будет заменено на имя покупателя<br/>
+        </small>
+      </div>
+    </div><!-- /.box-body -->
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+</div><!-- /.box -->
