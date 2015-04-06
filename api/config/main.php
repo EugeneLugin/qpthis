@@ -36,7 +36,57 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-            ],        
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/city',
+                    'tokens' => [
+                        '{id}' => '<id:[\\w-]+>'
+                    ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/warehouse',
+                    'tokens' => [
+                        '{id}' => '<id:[\\w-]+>'
+                    ],
+                    'pluralize'=>false
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/status',
+                    'tokens' => [
+                        '{id}' => '<id:[\\d]+>'
+                    ],
+                    'pluralize'=>false
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/item',
+                    'tokens' => [
+                        '{id}' => '<id:[\\w\\d]+>'
+                    ],
+                    'pluralize'=>false
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/order',
+                    'tokens' => [
+                        '{id}' => '<id:[\\d]+>'
+                    ],
+                    'pluralize'=>false,
+                    'extraPatterns' => [
+                        'GET counters' => 'counters',
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/order_audit',
+                    'tokens' => [
+                        '{id}' => '<id:[\\d]+>'
+                    ],
+                    'pluralize'=>false
+                ]
+            ],
         ],
         'request' => [
             'parsers' => [
