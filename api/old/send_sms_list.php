@@ -5,7 +5,7 @@
 
 	function send_sms($text, $rcpt, $order_id, $alpha, $type=1) {
         if (isset($_GET['set'])) return;
-		global $db;
+		global $db, $smsfly_user, $smsfly_password;
 
 		$text = htmlspecialchars($text);
 		$description = htmlspecialchars('Уведомление об отправке');
