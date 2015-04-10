@@ -8,13 +8,38 @@
     <table class="table table-hover">
       <tr>
         <th>Номер</th>
-        <th>Создан</th>
-        <th>Оформление</th>
-        <th>Доставка</th>
-        <th>Оплата</th>
+        <th>Создан<br/>
+          <button ng-click="orders.filter_created_at()" title="фильтр" class="btn btn-flat btn-xs" ng-class="{'btn-warning': orders.isCreatedAtFilter()}">
+            <i ng-show="!orders.isCreatedAtFilter()" class="fa fa-search"></i>
+            <i ng-show="orders.isCreatedAtFilter()" class="fa fa-search-plus"></i>
+          </button>
+        </th>
+        <th>Оформление<br/>
+          <button ng-click="orders.filter_step1()" title="фильтр" class="btn btn-flat btn-xs" ng-class="{'btn-warning': orders.isStep1Filter()}">
+            <i ng-show="!orders.isStep1Filter()" class="fa fa-search"></i>
+            <i ng-show="orders.isStep1Filter()" class="fa fa-search-plus"></i>
+          </button>
+        </th>
+        <th>Доставка<br/>
+          <button ng-click="orders.filter_step2()" title="фильтр" class="btn btn-flat btn-xs" ng-class="{'btn-warning': orders.isStep2Filter()}">
+            <i ng-show="!orders.isStep2Filter()" class="fa fa-search"></i>
+            <i ng-show="orders.isStep2Filter()" class="fa fa-search-plus"></i>
+          </button>
+        </th>
+        <th>Оплата<br/>
+          <button ng-click="orders.filter_step3()" title="фильтр" class="btn btn-flat btn-xs" ng-class="{'btn-warning': orders.isStep3Filter()}">
+            <i ng-show="!orders.isStep3Filter()" class="fa fa-search"></i>
+            <i ng-show="orders.isStep3Filter()" class="fa fa-search-plus"></i>
+          </button>
+        </th>
         <th>ФИО</th>
         <th>Адрес</th>
-        <th>Товар</th>
+        <th>Товар<br/>
+          <button ng-click="orders.filter_items()" title="фильтр" class="btn btn-flat btn-xs" ng-class="{'btn-warning': orders.isItemsFilter()}">
+            <i ng-show="!orders.isItemsFilter()" class="fa fa-search"></i>
+            <i ng-show="orders.isItemsFilter()" class="fa fa-search-plus"></i>
+          </button>
+        </th>
         <th>Сумма</th>
         <th>Телефон</th>
         <th>Доставка груза</th>

@@ -53,9 +53,7 @@ class OrderController extends ActiveController
         if (\Yii::$app->getRequest()->getQueryParam('archive')) {
             return new ActiveDataProvider([
                 'query' => $query
-                            ->andWhere('(orders.status_step1 > 0 AND orders.status_step1 <= 50)')
-                            ->orWhere('(orders.status_step2 > 0 AND orders.status_step2 <= 50)')
-                            ->orWhere('(orders.status_step3 > 0 AND orders.status_step3 <= 50)'),
+                            ->andWhere('(orders.status_step1 > 0 AND orders.status_step1 <= 50) OR (orders.status_step2 > 0 AND orders.status_step2 <= 50) OR (orders.status_step3 > 0 AND orders.status_step3 <= 50)'),
                 'pagination' => false
             ]);
         } elseif (\Yii::$app->getRequest()->getQueryParam('newpostlist')) {
