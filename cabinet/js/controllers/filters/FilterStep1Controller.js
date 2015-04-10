@@ -6,7 +6,7 @@ app.controller('FilterStep1Controller',
     '$modalInstance',
     function (ListFilter, StepStatuses, $modalInstance) {
       var filter = this;
-      filter.obj = {step1: ListFilter.steps_filter.step1};
+      filter.obj = {step1: ListFilter.steps_filter['step1']};
       filter.statuses = StepStatuses.step1;
 
       filter.submit = function () {

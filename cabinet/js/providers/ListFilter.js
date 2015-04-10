@@ -2,8 +2,8 @@ app.service('ListFilter', ['$rootScope', function($rootScope) {
   var ListFilter = this;
 
   ListFilter.created_at_filter = {date_from: null, date_till: null};
-  ListFilter.steps_filter = {step1: null, step2: null, step3: null};
-  ListFilter.items_filter = {items: null};
+  ListFilter.steps_filter = {'step1[]': null, 'step2[]': null, 'step3[]': null};
+  ListFilter.items_filter = {'items[]': null};
 
   ListFilter.loadFromStorage = function() {
     try {
@@ -23,16 +23,16 @@ app.service('ListFilter', ['$rootScope', function($rootScope) {
   };
 
   ListFilter.isStep1Filter = function() {
-    return !!ListFilter.steps_filter.step1;
+    return !!ListFilter.steps_filter['step1[]'];
   };
   ListFilter.isStep2Filter = function() {
-    return !!ListFilter.steps_filter.step2;
+    return !!ListFilter.steps_filter['step2[]'];
   };
   ListFilter.isStep3Filter = function() {
-    return !!ListFilter.steps_filter.step3;
+    return !!ListFilter.steps_filter['step3[]'];
   };
   ListFilter.isItemsFilter = function() {
-    return !!ListFilter.items_filter.items;
+    return !!ListFilter.items_filter['items[]'];
   };
 
   ListFilter.setCreatedAtFilter = function(filter) {
@@ -41,24 +41,25 @@ app.service('ListFilter', ['$rootScope', function($rootScope) {
   };
 
   ListFilter.setStep1Filter = function(filter) {
-    ListFilter.steps_filter.step1 = filter;
+    ListFilter.steps_filter['step1[]'] = filter;
     ListFilter.saveInLocalStorage();
   };
   ListFilter.setStep2Filter = function(filter) {
-    ListFilter.steps_filter.step2 = filter;
+    ListFilter.steps_filter['step2[]'] = filter;
     ListFilter.saveInLocalStorage();
   };
   ListFilter.setStep3Filter = function(filter) {
-    ListFilter.steps_filter.step3 = filter;
+    ListFilter.steps_filter['step3[]'] = filter;
     ListFilter.saveInLocalStorage();
   };
   ListFilter.setItemsFilter = function(filter) {
-    ListFilter.items_filter.items = filter;
+    ListFilter.items_filter['items[]'] = filter;
     ListFilter.saveInLocalStorage();
   };
 
   ListFilter.queryParams = function() {
     var res = {};
+    console.log(ListFilter.items_filter);
     return angular.extend(res, ListFilter.created_at_filter, ListFilter.steps_filter, ListFilter.items_filter);
   };
 }]);

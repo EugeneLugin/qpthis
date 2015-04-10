@@ -6,7 +6,7 @@ app.controller('FilterItemController',
     '$modalInstance',
     function (ListFilter, ItemsList, $modalInstance) {
       var filter = this;
-      filter.obj = {items: ListFilter.items_filter.items};
+      filter.obj = {items: ListFilter.items_filter['items[]']};
       filter.items = ItemsList.list;
 
       filter.submit = function () {
