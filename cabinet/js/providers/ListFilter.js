@@ -59,7 +59,6 @@ app.service('ListFilter', ['$rootScope', function($rootScope) {
 
   ListFilter.queryParams = function() {
     var res = {};
-    console.log(ListFilter.items_filter);
     return angular.extend(res, ListFilter.created_at_filter, ListFilter.steps_filter, ListFilter.items_filter);
   };
 }]);

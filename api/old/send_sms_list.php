@@ -149,7 +149,7 @@ echo $myXML;
 
 				$this_day_sent = $stmt->fetch();
 
-				if (!$this_day_sent and !in_array($ord['status_step2'], array(208,209,210,220,221,225,230,240,241,242) )){//array(208,209,210,220,221,225,230,240,241,242))) {
+				if (!$this_day_sent and !in_array($ord['status_step2'], array(208,209,210,220,221,225,230,240,241,242) )){
 					$rexp_sd = '/(\d\d\.\d\d)\.\d\d\d\d/';
 					preg_match($rexp_sd, $np_answer['arrival_date'], $short_date);
 					$rexp_adr = '/[^\d]*(\d*).*?:([^\(<]*)/';
