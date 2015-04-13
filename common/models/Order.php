@@ -43,8 +43,12 @@ use yii\helpers\Json;
  */
 class Order extends \yii\db\ActiveRecord
 {
+    var $no_audit = false;
+
     public function afterSave($insert, $changedAttributes)
     {
+        if ($this->no_audit) return true;
+
         $changes = [];
         foreach($changedAttributes as $key=>$value) {
             if (($key != 'comment') && ($this->$key != $value))
@@ -56,10 +60,24 @@ class Order extends \yii\db\ActiveRecord
             if ($this->comment) {
                 $audit->comment = $this->comment;
                 $this->comment = null;
-                $this->save();
             }
             $audit->save();
         }
+
+        if (isset($changes['status_step1']) && $changes['status_step1']['new'] == 111) {
+            $this->status_step2 = 201;
+        }
+        if (isset($changes['status_step2']) && $changes['status_step2']['new'] == 203) {
+            $this->status_step3 = 311;
+        }
+        if (isset($changes['status_step2']) && $changes['status_step2']['new'] == 209) {
+            $this->status_step3 = 311;
+        }
+
+        $this->no_audit = true;
+        $this->save();
+        $this->no_audit = false;
+
         return true;
     }
 
