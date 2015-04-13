@@ -10,6 +10,7 @@
         <div class="timeline-item">
           <span class="time"><i class="fa fa-clock-o"></i> {{comment.date | date:'dd.mm.yy hh:ii:ss'}}</span>
           <h3 class="timeline-header">{{comment.activity}}</h3>
+          <div ng-if="comment.comment" class="timeline-body" ng-bind="comment.comment"></div>
           <div ng-if="comment.details" class="timeline-body">
             <history-block obj="comment.details"></history-block>
           </div>
