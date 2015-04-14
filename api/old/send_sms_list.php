@@ -72,13 +72,7 @@
 			send_sms($text, $rcpt, $order_id, null);
 		}
 	}
-?>
-<head>
-    <meta charset="utf-8">
-    <title>QPthis</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-</head>
-<?php
+
 	$query = "
 		SELECT
 		    'HochuKupit' as alphaname,
@@ -204,10 +198,8 @@
 			}
 		}
 	}
-	?>
-	</table>
-<?php
-	$query = "
+
+    $query = "
         SELECT
 		    'HochuKupit' as alphaname,
 			orders.id as id,
