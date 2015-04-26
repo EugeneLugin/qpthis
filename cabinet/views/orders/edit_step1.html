@@ -21,7 +21,7 @@
       </div>
       <input-field title="ФИО" name="fio" model="order.obj.fio"></input-field>
       <p>Адрес укзанный при заказе: {{order.obj.city_area}} {{order.obj.address}}</p>
-      <input-field title="Адрес для курьера" name="courier_adr" model="order.obj.courier_adr"></input-field>
+      <!--input-field title="Адрес для курьера" name="courier_adr" model="order.obj.courier_adr"></input-field-->
       <div class="form-group clearfix">
         <label class="col-sm-2 control-label">Отделение Новой почты (<a target="_blank" href="http://novaposhta.ua/frontend/nearest/ru">найти</a>)</label>
         <div class="col-sm-5">
@@ -40,10 +40,6 @@
       <input-field title="Товар" readonly="true" name="item_name" model="order.obj.item.name"></input-field>
       <input-field title="Параметры" name="item_params" model="order.obj.item_params"></input-field>
       <input-field type="number" min="1" step="any" title="Сумма" name="item_price" model="order.obj.item_price"></input-field>
-      <input-field type="number" min="0" step="any" title="Вес (кг)" name="weight" model="order.obj.weight"></input-field>
-      <input-field type="number" min="1" step="1" title="Ширина (см)" name="width" model="order.obj.width"></input-field>
-      <input-field type="number" min="1" step="1" title="Высота (см)" name="height" model="order.obj.height"></input-field>
-      <input-field type="number" min="1" step="1" title="Глубина (см)" name="length" model="order.obj.length"></input-field>
       <div class="form-group clearfix">
         <label for="inputphone" class="col-sm-2 control-label">Телефон</label>
         <div class="col-sm-5">
