@@ -26,7 +26,7 @@ class OrderController extends ActiveController
     }
 
     public function actionCounters() {
-        return Order::find()->where('status_step1 = 100')->count();
+        return ['count' => Order::find()->where('status_step1 = 100')->count()];
     }
 
     public function prepareDataProvider()

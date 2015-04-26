@@ -15,7 +15,7 @@ app.controller('SiteController',
 
         site.get_new_counters = function() {
           Orders.counters(function (counter) {
-            site.new_orders_count = counter[0];
+            site.new_orders_count = counter.count;
           });
         };
 
