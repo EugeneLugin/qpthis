@@ -16,7 +16,7 @@ app.controller('ArchiveListController',
           var orders_query = {expand: 'item,step1,step2,step3,warehouse', archive: true, r: Date.now()};
           angular.extend(orders_query, ListFilter.queryParams());
           Orders.query(orders_query, function (list) {
-            orders.list = $filter('orderBy')(list, ['created_at'], false);
+            orders.list = $filter('orderBy')(list, ['created_at'], true);
           });
         };
         orders.queryList();
