@@ -10,6 +10,11 @@ app.controller('ItemEditController',
 
         var defaultObj = {};
 
+        item.tinymceOptions = {
+          plugins: "code",
+          toolbar: "undo redo formatselect bold italic justifyleft justifycenter justifyright justifyfull bullist numlist outdent indent code"
+        };
+
         item.obj = Items.get({id: $stateParams.uuid}, function(data) {
             defaultObj = data;
         });

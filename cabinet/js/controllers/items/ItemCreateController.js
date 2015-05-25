@@ -33,6 +33,11 @@ app.controller('ItemCreateController',
 
         item.obj = defaultObj;
 
+        item.tinymceOptions = {
+          plugins: "code",
+          toolbar: "undo redo formatselect bold italic justifyleft justifycenter justifyright justifyfull bullist numlist outdent indent code"
+        };
+        
         item.reset = function() {
           item.obj = defaultObj;
         };

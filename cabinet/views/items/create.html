@@ -20,6 +20,18 @@
 
       <input-field title="Yandex метрика идентификатор" name='yandexmetric' model="item.obj.yandexmetric"></input-field>
       <input-field title="Yandex метрика цель" name='yandexgoal' model="item.obj.yandexgoal"></input-field>
+
+      <div class="form-group clearfix">
+        <label class="control-label">Завершение покупки</label>
+        <div>
+          <textarea name="finish_screen" ui-tinymce="item.tinymceOptions" ng-model="item.obj.finish_screen"></textarea>
+        </div>
+        <small>
+          {item} будет заменено на название товара<br/>
+          {surname} будет заменено на фамилию покупателя<br/>
+          {name} будет заменено на имя покупателя<br/>
+        </small>
+      </div>
     </div><!-- /.box-body -->
 
     <div class="box-footer">
